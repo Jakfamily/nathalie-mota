@@ -12,3 +12,31 @@ function theme_slug_setup()
     add_theme_support('title-tag');
 }
 add_action('after_setup_theme', 'theme_slug_setup');
+
+// Enregistrement des menus
+function register_menus()
+{
+    register_nav_menus(
+        array(
+            'header-menu' => 'menu header',
+            'footer-menu' => 'menu footer'
+        )
+    );
+}
+add_action('init', 'register_menus');
+
+
+// Ajout des scripts personnalisés
+function enqueue_custom_scripts()
+{
+    // Enqueue jQuery from CDN
+    wp_enqueue_script('jquery-cdn', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js', array(), '3.7.1', true);
+
+    // Enqueue modale-contact.js
+    wp_enqueue_script('modale-contact-script', get_template_directory_uri() . '/assets/js/modale-contact.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue burger-menu.js
+    wp_enqueue_script('menu-burger-script', get_template_directory_uri() . '/assets/js/menu-burger.js', array('jquery'), '1.0.0', true);
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');

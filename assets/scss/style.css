@@ -1,0 +1,605 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "PoppinsBold";
+  src: url("../fonts/poppins-bold-webfont.woff2") format("woff2"), url("../fonts/poppins-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PoppinsItalic";
+  src: url("../fonts/poppins-italic-webfont.woff2") format("woff2"), url("../fonts/poppins-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PoppinsMedium";
+  src: url("../fonts/poppins-medium-webfont.woff2") format("woff2"), url("../fonts/poppins-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url("../fonts/poppins-regular-webfont.woff2") format("woff2"), url("../fonts/poppins-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "space_monobold";
+  src: url("../fonts/spacemono-bold-webfont.woff2") format("woff2"), url("../fonts/spacemono-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "space_monobold_italic";
+  src: url("../fonts/spacemono-bolditalic-webfont.woff2") format("woff2"), url("../fonts/spacemono-bolditalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "space_monoitalic";
+  src: url("../fonts/spacemono-italic-webfont.woff2") format("woff2"), url("../fonts/spacemono-italic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "space_monoregular";
+  src: url("../fonts/spacemono-regular-webfont.woff2") format("woff2"), url("../fonts/spacemono-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* Styles pour le footer */
+footer {
+  height: 60px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  font-size: 16px;
+  font-family: "space_monoregular", monospace;
+  border-top: 1px solid black;
+}
+
+/* Styles pour le menu du footer */
+.footer-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+/* Styles pour la liste du menu du footer */
+.footer-menu {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles pour les éléments de la liste du menu du footer */
+.footer-menu li {
+  padding: 0 40px;
+}
+
+/* Styles pour les liens dans les éléments de la liste du menu du footer */
+.footer-menu li a {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+}
+
+/* Media query pour les écrans avec une largeur maximale de 375px */
+@media screen and (max-width: 375px) {
+  /* Styles spécifiques pour la liste du menu du footer lorsque la largeur de l'écran est inférieure ou égale à 375px */
+  .footer-menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* Change la direction en colonne */
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; /* Centre les éléments */
+  }
+  /* Ajuste l'ordre des éléments pour les placer sous la bordure supérieure */
+  .footer-menu li {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+    margin-top: 30px;
+  }
+  /* Ajuste l'espacement entre les éléments de la liste */
+  .footer-menu li:not(:first-child) {
+    margin-top: 10px;
+  }
+}
+.header {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
+  font-family: "space_monoregular", monospace;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  -webkit-box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+          box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+}
+
+.header_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px 0;
+}
+
+.burgerMenu {
+  display: none;
+}
+
+.nav-links-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+}
+.nav-links-container li {
+  font-size: 16px;
+  font-family: "space_monoregular", monospace;
+  text-transform: uppercase;
+}
+.nav-links-container li a {
+  color: #000;
+  text-decoration: none;
+}
+.nav-links-container li a:hover {
+  font-weight: 700;
+}
+
+.header-menu {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+.header-menu li a {
+  text-decoration: none;
+  color: #000;
+  padding: 0 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.logo {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    padding-inline: 16px;
+  }
+  header.open {
+    position: fixed;
+    background-color: #fff;
+    z-index: 2;
+    animation: openNav 0.7s ease-in-out 0s forwards;
+    -webkit-animation: openNav 0.7s ease-in-out 0s forwards;
+  }
+  @-webkit-keyframes openNav {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+  }
+  @keyframes openNav {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+  }
+  header .siteNavigation .burgerMenu {
+    width: 30px;
+    height: 20px;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    cursor: pointer;
+  }
+  header .siteNavigation .burgerMenu .bar {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  }
+  header .siteNavigation .burgerMenu.open .bar:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(5px, 5px);
+  }
+  header .siteNavigation .burgerMenu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  header .siteNavigation .burgerMenu.open .bar:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(5px, -5px);
+  }
+  header .siteNavigation .navigation {
+    display: none !important;
+  }
+  header .siteNavigation .navigation.open {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: -16px;
+    right: 0;
+    background-color: #e00000;
+    width: 100vw;
+    height: 100vh;
+  }
+  header .siteNavigation .navigation .menuNavigation {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 18px;
+    height: 600px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-inline: 0;
+  }
+  header .siteNavigation .navigation .menuNavigation li {
+    font-size: 45px !important;
+  }
+  header .siteNavigation .navigation .menuNavigation li a {
+    color: #fff !important;
+  }
+}
+.form-contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+}
+
+.custom-input-class,
+.custom-textarea-class {
+  width: 100%;
+  border-radius: 8px;
+  width: 270px;
+  border: 1px solid #b8bbc2;
+  resize: none;
+}
+
+.custom-input-class {
+  height: 37px;
+}
+
+.custom-textarea-class {
+  height: 250px;
+}
+
+.custom-label {
+  font-size: 12px;
+  font-family: "PoppinsMedium";
+  font-weight: bolder;
+  line-height: 18px;
+}
+
+.customsubmit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #d8d8d8;
+  height: 50px;
+  width: 275px;
+  border: 1px solid #b8bbc2;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 3, 0.8);
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9999;
+}
+.popup-overlay.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.popup-contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 512px;
+  border: 2px solid black;
+  background: white;
+  padding: 8px 40px 40px 40px;
+  height: 90vh;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 465px) {
+  .popup-contact {
+    max-width: 270px;
+    height: auto;
+  }
+}
+/* Styles pour l'icône du menu burger */
+.burgerMenu {
+  margin-right: 20px;
+  width: 30px;
+  height: 20px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+  /* Styles pour les trois barres du menu burger */
+  /* Styles pour l'état ouvert du menu burger */
+}
+.burgerMenu .bar {
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+.burgerMenu.open .bar:nth-child(1) {
+  -webkit-transform: rotate(45deg) translate(5px, 5px);
+          transform: rotate(45deg) translate(5px, 5px);
+}
+.burgerMenu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+.burgerMenu.open .bar:nth-child(3) {
+  -webkit-transform: rotate(-45deg) translate(5px, -5px);
+          transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Media query pour les écrans avec une largeur maximale de 600px */
+@media screen and (max-width: 600px) {
+  /* Styles pour l'en-tête */
+  header {
+    padding-inline: 16px;
+    /* Styles pour l'état ouvert de l'en-tête */
+    /* Styles pour le conteneur de l'en-tête */
+  }
+  header.open {
+    position: fixed;
+    background-color: #fff;
+    z-index: 2;
+    animation: openNav 0.7s ease-in-out 0s forwards;
+    -webkit-animation: openNav 0.7s ease-in-out 0s forwards;
+    /* Keyframes pour l'animation d'ouverture */
+  }
+  @-webkit-keyframes openNav {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+  }
+  @keyframes openNav {
+    0% {
+      transform: translateX(100%);
+      -webkit-transform: translateX(100%);
+      -moz-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      -o-transform: translateX(100%);
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+  }
+  header .header_container {
+    /* Styles pour l'icône du menu burger à l'intérieur du conteneur de l'en-tête */
+    /* Styles pour le conteneur des liens de navigation */
+  }
+  header .header_container .burgerMenu {
+    width: 30px;
+    height: 20px;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    cursor: pointer;
+    /* Styles pour les trois barres du menu burger */
+    /* Styles pour l'état ouvert du menu burger */
+  }
+  header .header_container .burgerMenu .bar {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  }
+  header .header_container .burgerMenu.open .bar:nth-child(1) {
+    -webkit-transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(5px, 5px);
+  }
+  header .header_container .burgerMenu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  header .header_container .burgerMenu.open .bar:nth-child(3) {
+    -webkit-transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(5px, -5px);
+  }
+  header .header_container .nav-links-container {
+    display: none !important;
+    /* Styles pour l'état ouvert du conteneur des liens de navigation */
+    /* Styles pour le menu de l'en-tête à l'intérieur du conteneur des liens de navigation */
+  }
+  header .header_container .nav-links-container.open {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    right: 0;
+    background-color: #e00000;
+    width: 100vw;
+    height: calc(100vh - 75px);
+  }
+  header .header_container .nav-links-container .header-menu {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 46px;
+    height: 850px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding-inline: 0;
+    /* Styles pour les éléments de liste à l'intérieur du menu de l'en-tête */
+  }
+  header .header_container .nav-links-container .header-menu li {
+    font-size: 45px !important;
+    /* Styles pour les balises d'ancrage à l'intérieur des éléments de liste */
+  }
+  header .header_container .nav-links-container .header-menu li a {
+    color: #fff !important;
+  }
+}/*# sourceMappingURL=style.css.map */
