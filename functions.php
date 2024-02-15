@@ -25,6 +25,13 @@ function register_menus()
 }
 add_action('init', 'register_menus');
 
+// Ajout du support pour les miniatures (post-thumbnails)
+function theme_support_post_thumbnails()
+{
+    add_theme_support('post-thumbnails');
+}
+add_action('after_setup_theme', 'theme_support_post_thumbnails');
+
 
 // Ajout des scripts personnalisés
 function enqueue_custom_scripts()
@@ -37,6 +44,9 @@ function enqueue_custom_scripts()
 
     // Enqueue burger-menu.js
     wp_enqueue_script('menu-burger-script', get_template_directory_uri() . '/assets/js/menu-burger.js', array('jquery'), '1.0.0', true);
+
+    // Enqueue miniatures.js
+    wp_enqueue_script('miniatures-script', get_template_directory_uri() . '/assets/js/miniatures.js', array('jquery'), '1.0.0', true);
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');

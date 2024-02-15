@@ -1,5 +1,34 @@
-<?php include_once 'variables.php';?>
+<?php get_header(); ?>
 
+<?php
+// Récupération des champs ACF personnalisés pour l'article actuel
+$photoId = get_field('photo');
+$reference = get_field('reference');
+$refUppercase = strtoupper($reference); // Conversion de la référence en majuscules
+$type = get_field('type');
+
+// Récupération des termes de la taxonomie 'annee' associés à l'article
+$annees_terms = get_the_terms(get_the_ID(), 'annee');
+// Vérification de l'existence des termes et non-vide
+if ($annees_terms && !is_wp_error($annees_terms)) {
+  // Prendre le premier terme, car un article peut avoir plusieurs termes
+  $annee = $annees_terms[0]->name;
+} else {
+  // Définition d'une valeur par défaut si aucun terme n'est trouvé
+  $annee = 'Non défini';
+}
+
+// Récupération des termes de la taxonomie 'categorie' et 'format'
+$categories = get_the_terms(get_the_ID(), 'categorie');
+$formats = get_the_terms(get_the_ID(), 'format');
+$FORMATS = $formats ? ucwords($formats[0]->name) : '';
+
+// Définissez les URLs des vignettes pour le post précédent et suivant
+$nextPost = get_next_post();
+$previousPost = get_previous_post();
+$previousThumbnailURL = $previousPost ? get_the_post_thumbnail_url($previousPost->ID, 'thumbnail') : '';
+$nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumbnail') : '';
+?>
 
 <!-- Section d'affichage de la photo et des informations associées -->
 <section class="cataloguePhotos">
@@ -11,9 +40,9 @@
       </div>
 
       <div class="photo-info">
-        <!-- Affichage du titre de la photo -->
-        <h2><?php echo get_the_title(); ?></h2>
-        <!-- Affichage des détails de la photo -->
+        <div class="photo-title">
+          <h2><?php echo get_the_title(); ?></h2>
+        </div>
         <div class="taxo-details">
           <p>RÉFÉRENCES: <?php echo esc_html($refUppercase); ?></p>
           <p>CATÉGORIE: <?php echo esc_html($categories ? $categories[0]->name : 'Non défini'); ?></p>
@@ -34,21 +63,67 @@
     </div>
 
     <div class="naviguationPhotos">
-      <!-- Conteneur pour la miniature de la photo -->
-      <div class="miniPicture" id="miniPicture">
-        <!-- La miniature sera chargée  ici par JavaScript -->
-      </div>
 
-      <div class="naviguationArrow">
-        <!-- Flèches de navigation vers les photos précédentes et suivantes -->
-        <?php if (!empty($previousPost)) : ?>
-          <img class="arrow arrow-left" src="<?php echo get_theme_file_uri() . '/assets/images/left.png'; ?>" alt="Photo précédente" data-thumbnail-url="<?php echo esc_url($previousThumbnailURL); ?>" data-target-url="<?php echo esc_url(get_permalink($previousPost->ID)); ?>">
-        <?php endif; ?>
+			<!-- Conteneur pour la miniature -->
+			<div class="miniPicture" id="miniPicture">
+				<!-- La miniature sera chargée ici par JavaScript -->
+			</div>
 
-        <?php if (!empty($nextPost)) : ?>
-          <img class="arrow arrow-right" src="<?php echo get_theme_file_uri() . '/assets/images/right.png'; ?>" alt="Photo suivante" data-thumbnail-url="<?php echo esc_url($nextThumbnailURL); ?>" data-target-url="<?php echo esc_url(get_permalink($nextPost->ID)); ?>">
-        <?php endif; ?>
-      </div>
-    </div>
+			<div class="naviguationArrow">
+				<?php if (!empty($previousPost)) : ?>
+					<img class="arrow arrow-left" src="<?php echo get_theme_file_uri() . '/assets/images/left.png'; ?>" alt="Photo précédente" data-thumbnail-url="<?php echo $previousThumbnailURL; ?>" data-target-url="<?php echo esc_url(get_permalink($previousPost->ID)); ?>">
+				<?php endif; ?>
+
+				<?php if (!empty($nextPost)) : ?>
+					<img class="arrow arrow-right" src="<?php echo get_theme_file_uri() . '/assets/images/right.png'; ?>" alt="Photo suivante" data-thumbnail-url="<?php echo $nextThumbnailURL; ?>" data-target-url="<?php echo esc_url(get_permalink($nextPost->ID)); ?>">
+				<?php endif; ?>
+			</div>
+
+		</div>
   </div>
 </section>
+
+
+<!-- Section d'affichage des photos similaires -->
+<section>
+  <div class="titleSugest">
+    <h3>VOUS AIMEREZ AUSSI</h3>
+  </div>
+  <div class="similar_photo">
+    <?php
+    $categories = get_the_terms(get_the_ID(), 'categorie');
+
+    $args = array(
+      'post_type' => 'photo',
+      'posts_per_page' => 2,
+      'post__not_in' => array(get_the_ID()),
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'categorie',
+          'field' => 'id',
+          'terms' => $categories ? wp_list_pluck($categories, 'term_id') : array(),
+        ),
+      ),
+    );
+    $query = new WP_Query($args);
+
+    while ($query->have_posts()) :
+      $query->the_post();
+      $photoId = get_field('photo');
+      $reference = get_field('reference');
+      $refUppercase = strtoupper($reference);
+      get_template_part('template-parts/bloc-photo');
+    endwhile;
+
+    // Affiche un message si aucune photo similaire n'est trouvée
+    if (!$query->have_posts()) :
+      echo '<p class="photoNotFound">Pas de photo similaire trouvée pour la catégorie.</p>';
+    endif;
+
+    // Réinitialisation des données de post après la boucle de requête
+    wp_reset_postdata();
+    ?>
+  </div>
+</section>
+
+<?php get_footer(); ?>
