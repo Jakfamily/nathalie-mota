@@ -3,7 +3,7 @@ console.log("modale-contact: son js est chargé");
 $(function () {
   // Sélectionne les éléments déclencheurs de la modale et l'overlay de la modale
   const boutonContact = $("#boutonContact");
-  const openContactLink = $("#menu-item-17");
+  const openContactLink = $("#menu-item-38");
   const modaleOverlay = $(".popup-overlay");
   const referencePhotoInput = $("#referencePhoto");
 
