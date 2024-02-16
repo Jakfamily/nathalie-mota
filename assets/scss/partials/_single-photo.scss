@@ -295,7 +295,8 @@ body {
 /* Affichage des photos similaires */
 .similar_photo {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 40px;
 
   .similar_photo__container {
     width: 48%;
