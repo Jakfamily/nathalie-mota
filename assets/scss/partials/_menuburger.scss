@@ -42,23 +42,7 @@
       position: fixed;
       background-color: #fff;
       z-index: 2;
-      animation: openNav 0.7s ease-in-out 0s forwards;
-      -webkit-animation: openNav 0.7s ease-in-out 0s forwards;
-
-      /* Keyframes pour l'animation d'ouverture */
-      @keyframes openNav {
-        0% {
-          transform: translateX(100%);
-          -webkit-transform: translateX(100%);
-          -moz-transform: translateX(100%);
-          -ms-transform: translateX(100%);
-          -o-transform: translateX(100%);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
-      }
+      @include openNavAnimation;
     }
 
     /* Styles pour le conteneur de l'en-tête */
