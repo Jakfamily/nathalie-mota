@@ -1,5 +1,4 @@
 <?php
-//recupere murl de l'image avec wp
 
 $photoUrl = get_field('photo');
 

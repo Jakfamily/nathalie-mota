@@ -3,7 +3,7 @@
 console.log("Affichage Miniature : son js est chargé");
 
 // Attend que le document soit prêt avant d'exécuter le script
-$(document).ready(function () {
+$(function () {
   // Sélectionne l'élément avec l'ID "miniPicture"
   const miniPicture = $("#miniPicture");
 

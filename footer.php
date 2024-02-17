@@ -12,5 +12,8 @@
     </nav>
   <!--chargement du template modale.php  -->
     <?php get_template_part('template-parts/modale-contact'); ?>
+  <!--chargement du template lightbox.php  -->
+    <?php get_template_part('template-parts/lightbox'); ?>
+
 
 </footer>
