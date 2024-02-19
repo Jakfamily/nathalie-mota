@@ -1,3 +1,4 @@
+/* Styles for the lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -13,6 +14,7 @@
   cursor: pointer;
 }
 
+/* Close button styles */
 .lightbox .fermelightbox {
   position: absolute;
   top: 40px;
@@ -25,6 +27,7 @@
   }
 }
 
+/* Navigation button styles */
 .lightbox .lightboxPrecedent,
 .lightbox .lightboxSuivant {
   font-family: space_monoregular;
@@ -46,7 +49,6 @@
   }
 
   @media screen and (min-width: 200px) and (max-width: 300px) {
-    //right: 6%;
     right: 0%;
     top: 95%;
   }
@@ -54,12 +56,12 @@
   &:hover {
     font-size: 15px;
     font-weight: 900;
-    cursor: pointer; // Ajoutez ceci si vous voulez aussi changer le curseur au survol
+    cursor: pointer;
   }
 }
 
+/* Styles for the previous navigation button */
 .lightbox .lightboxPrecedent {
-  //left: 3%;
   left: 12%;
 
   @media screen and (min-width: 765px) and (max-width: 1140px) {
@@ -74,23 +76,19 @@
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    //right: 6%;
     right: 0%;
     left: 0%;
-    //top: 87%;
     top: 95%;
   }
 
   @media screen and (min-width: 200px) and (max-width: 400px) {
-    //right: 6%;
-    //right: 0%;
     top: 95%;
     left: -11%;
   }
 }
 
+/* Styles for the next navigation button */
 .lightbox .lightboxSuivant {
-  //right: 5%;
   right: 15%;
 
   @media screen and (min-width: 765px) and (max-width: 1140px) {
@@ -105,19 +103,17 @@
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    //right: 6%;
     right: 0%;
     top: 95%;
   }
 
   @media screen and (min-width: 200px) and (max-width: 400px) {
-    //right: 6%;
-    //right: 0%;
     top: 95%;
     right: -8%;
   }
 }
 
+/* Styles for the lightbox image */
 .lightboxImage {
   width: 564px;
   height: 495px;
@@ -130,6 +126,7 @@
   }
 }
 
+/* Caption styles */
 .lightbox .lightbox-caption {
   color: #fff;
   font-size: 20px;
@@ -137,6 +134,7 @@
   margin-top: 10px;
 }
 
+/* Reference text styles */
 .lightboxReference {
   font-family: PoppinsRegular;
   font-size: 18px;
@@ -156,7 +154,6 @@
 
   @media screen and (min-width: 250px) and (max-width: 350px) {
     bottom: 62px;
-    //left: 180px;
     left: 2px;
     width: 80px;
     z-index: 1;
@@ -164,18 +161,13 @@
 
   @media screen and (min-width: 350px) and (max-width: 400px) {
     bottom: 62px;
-    //left: 230px;
-    //left: 25px;
     left: 0px;
     width: 80px;
     z-index: 1;
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    //bottom: 62px;
-    //bottom: 110px;
     bottom: 80px;
-    //left: 240px;
     left: 22px;
     width: 80px;
     z-index: 1;
@@ -183,7 +175,6 @@
 
   @media screen and (min-width: 765px) and (max-width: 1024px) {
     bottom: 10px;
-    //left: 240px;
     left: 17px;
     width: 80px;
     z-index: 1;
@@ -192,13 +183,13 @@
 
   @media screen and (min-width: 1024px) and (max-width: 1140px) {
     bottom: 15px;
-
     width: 80px;
     font-size: 22px;
     left: 0px;
   }
 }
 
+/* Category text styles */
 .lightboxCategorie {
   font-family: space_monoregular;
   font-size: 18px;
@@ -221,15 +212,11 @@
 
   @media screen and (min-width: 350px) and (max-width: 400px) {
     bottom: 62px;
-    //right: 180px;
     right: 15px;
     z-index: 1;
   }
 
   @media screen and (min-width: 400px) and (max-width: 765px) {
-    //bottom: 62px;
-    //right: 200px;
-    // bottom: 110px;
     bottom: 80px;
     right: 20px;
     z-index: 1;
@@ -237,7 +224,6 @@
 
   @media screen and (min-width: 765px) and (max-width: 1024px) {
     bottom: 10px;
-    //right: 200px;
     right: 15px;
     z-index: 1;
     font-size: 25px;
@@ -245,12 +231,12 @@
 
   @media screen and (min-width: 1024px) and (max-width: 1140px) {
     bottom: 15px;
-    //right: 455px;
     right: 15px;
     font-size: 22px;
   }
 }
 
+/* Styles for the lightbox photo */
 .lightboxPhoto {
   position: absolute;
   top: 50%;
@@ -268,6 +254,7 @@
   }
 }
 
+/* Styles for the lightbox content */
 .lightbox-content {
   position: absolute;
   top: 50%;

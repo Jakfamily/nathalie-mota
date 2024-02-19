@@ -1,5 +1,3 @@
-/* Affichage Miniature */
-// Un message dans la console indiquant que le script d'affichage miniature est chargé
 console.log("Affichage Miniature : son js est chargé");
 
 // Attend que le document soit prêt avant d'exécuter le script

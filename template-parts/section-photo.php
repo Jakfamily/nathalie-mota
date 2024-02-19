@@ -8,7 +8,6 @@ $args = array(
 );
 $photo_block = new WP_Query($args);
 
-
 if ($photo_block->have_posts()) :
 
     set_query_var('photo_block_args', array('context' => 'front-page'));
@@ -25,6 +24,6 @@ else :
 endif;
 ?>
 
-<div id="blockPlusdImage">
+<div id="blockPusdImage">
     <button id="plusDImage" data-page="1" data-url="">Charger plus</button>
 </div>
