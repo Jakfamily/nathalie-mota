@@ -1,8 +1,7 @@
 <?php
-// Récupération de 12 photos aléatoires pour le bloc initial
 $args = array(
     'post_type'      => 'photo',
-    'posts_per_page' => 12,
+    'posts_per_page' => 12,  // Limiter à 12 photos au chargement initial
     'orderby'        => 'date',
     'order'          => 'ASC',
 );
@@ -18,9 +17,6 @@ if ($photo_block->have_posts()) :
     while ($photo_block->have_posts()) :
         $photo_block->the_post();
         get_template_part('template-parts/bloc-photo', get_post_format());
-    ?>
-
-    <?php
     endwhile;
 
     // Réinitialisation de la requête
