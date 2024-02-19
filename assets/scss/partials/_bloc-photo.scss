@@ -1,3 +1,4 @@
+/* Styles pour la section des photos similaires */
 .PhotoSimilaire {
   margin: 0;
   width: 100%;
@@ -11,15 +12,19 @@
   }
 }
 
+/* Styles pour chaque bloc de photo relative */
 .blockPhotoRelative {
   flex-shrink: 0;
   position: relative;
   width: 564px;
   height: 495px;
   margin-bottom: 50px;
+
+  /* Ajustements responsives */
   @media screen and (min-width: 765px) and (max-width: 1140px) {
     width: 370px;
   }
+
   @media screen and (max-width: 765px) {
     width: 318px;
     height: 279px;
@@ -31,11 +36,14 @@
     object-fit: cover;
   }
 
+  /* Styles pour l'overlay et les icônes au survol */
   .overlay:hover .eye-icon,
   .overlay:hover .fullscreen-icon {
     display: block;
   }
 }
+
+/* Styles pour l'overlay au survol de l'image */
 .overlay {
   position: absolute;
   top: 50%;
@@ -47,16 +55,19 @@
   background-color: rgba(0, 0, 0, 0);
   transition: opacity 0.3s, background-color 0.3s;
 
+  /* Ajustements responsives au survol */
   &:hover {
     opacity: 0.8;
     background-color: rgba(0, 0, 0, 0.8);
 
+    /* Affichage des titres au survol */
     h2,
     h3 {
       display: block;
     }
   }
 
+  /* Styles pour les titres dans l'overlay */
   h2 {
     text-transform: uppercase;
     position: absolute;
@@ -67,6 +78,7 @@
     font-size: 14px;
     display: none;
 
+    /* Ajustements responsives */
     @media screen and (max-width: 765px) {
       top: 227px;
       font-size: 12px;
@@ -83,6 +95,7 @@
     font-size: 14px;
     display: none;
 
+    /* Ajustements responsives */
     @media screen and (max-width: 765px) {
       left: 240px;
       top: 237px;
@@ -94,6 +107,7 @@
     }
   }
 
+  /* Styles pour l'icône de l'œil au survol */
   .eye-icon {
     width: 48px;
     height: 33.2px;
@@ -102,6 +116,7 @@
     position: absolute;
     display: none;
 
+    /* Ajustements responsives */
     @media screen and (max-width: 765px) {
       top: 135px;
       left: 140px;
@@ -112,6 +127,7 @@
     }
   }
 
+  /* Styles pour l'icône de plein écran au survol */
   .fullscreen-icon {
     position: absolute;
     cursor: pointer;
@@ -123,6 +139,7 @@
     border: 1px;
     display: none;
 
+    /* Ajustements responsives */
     @media screen and (max-width: 765px) {
       top: 17px;
       left: 267px;

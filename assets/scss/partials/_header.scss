@@ -1,3 +1,4 @@
+/* Styles pour l'en-tête */
 .header {
   box-sizing: border-box;
   font: {
@@ -11,6 +12,7 @@
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
 
+/* Styles pour le conteneur de l'en-tête */
 .header_container {
   display: flex;
   margin: 0 auto;
@@ -21,10 +23,12 @@
   padding: 30px 0;
 }
 
+/* Styles pour le menu burger (initialement caché) */
 .burgerMenu {
   display: none;
 }
 
+/* Styles pour le conteneur des liens de navigation */
 .nav-links-container {
   display: flex;
   align-items: center;
@@ -49,6 +53,7 @@
   }
 }
 
+/* Styles pour le menu de navigation */
 .header-menu {
   list-style: none;
   display: flex;
@@ -66,41 +71,40 @@
   }
 }
 
+/* Styles pour le logo */
 .logo {
   margin-left: 20px;
 }
 
+/* Media query pour les écrans de moins de 600px */
 @media screen and (max-width: 600px) {
-  header {
+  .header {
     padding-inline: 16px;
 
+    /* Styles lorsque le menu est ouvert */
     &.open {
       position: fixed;
       background-color: #fff;
       z-index: 2;
       animation: openNav 0.7s ease-in-out 0s forwards;
-      -webkit-animation: openNav 0.7s ease-in-out 0s forwards;
+    }
 
-      @keyframes openNav {
-        0% {
-          transform: translateX(100%);
-          -webkit-transform: translateX(100%);
-          -moz-transform: translateX(100%);
-          -ms-transform: translateX(100%);
-          -o-transform: translateX(100%);
-        }
-
-        100% {
-          transform: translateX(0);
-        }
+    /* Animation pour ouvrir le menu */
+    @keyframes openNav {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
       }
     }
 
+    /* Styles pour le menu burger lorsqu'il est ouvert */
     .siteNavigation {
       .burgerMenu {
         width: 30px;
         height: 20px;
-        display: flex !important;
+        display: flex;
         flex-direction: column;
         justify-content: space-between;
         cursor: pointer;
@@ -112,26 +116,26 @@
           transition: transform 0.3s ease-in-out;
         }
 
+        /* Styles pour le menu burger lorsqu'il est ouvert */
         &.open {
           .bar:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
           }
-
           .bar:nth-child(2) {
             opacity: 0;
           }
-
           .bar:nth-child(3) {
             transform: rotate(-45deg) translate(5px, -5px);
           }
         }
       }
 
+      /* Styles pour la navigation lorsqu'elle est ouverte */
       .navigation {
-        display: none !important;
+        display: none;
 
         &.open {
-          display: flex !important;
+          display: flex;
           flex-direction: column;
           position: absolute;
           top: 50px;
@@ -140,23 +144,24 @@
           background-color: #e00000;
           width: 100vw;
           height: 100vh;
-        }
 
-        .menuNavigation {
-          flex-direction: column;
-          gap: 18px;
-          height: 600px;
-          justify-content: center;
-          align-items: center;
-          padding-inline: 0;
+          /* Styles pour les liens de navigation lorsqu'ils sont ouverts */
+          .menuNavigation {
+            flex-direction: column;
+            gap: 18px;
+            height: 600px;
+            justify-content: center;
+            align-items: center;
+            padding-inline: 0;
 
-          li {
-            font: {
-              size: 45px !important;
-            }
+            li {
+              font: {
+                size: 45px !important;
+              }
 
-            a {
-              color: #fff !important;
+              a {
+                color: #fff !important;
+              }
             }
           }
         }

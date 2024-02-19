@@ -137,6 +137,7 @@ footer {
     margin-top: 10px;
   }
 }
+/* Styles pour l'en-tête */
 .header {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -156,6 +157,7 @@ footer {
           box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
 }
 
+/* Styles pour le conteneur de l'en-tête */
 .header_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -172,10 +174,12 @@ footer {
   padding: 30px 0;
 }
 
+/* Styles pour le menu burger (initialement caché) */
 .burgerMenu {
   display: none;
 }
 
+/* Styles pour le conteneur des liens de navigation */
 .nav-links-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -201,6 +205,7 @@ footer {
   font-weight: 700;
 }
 
+/* Styles pour le menu de navigation */
 .header-menu {
   list-style: none;
   display: -webkit-box;
@@ -217,28 +222,30 @@ footer {
   cursor: pointer;
 }
 
+/* Styles pour le logo */
 .logo {
   margin-left: 20px;
 }
 
+/* Media query pour les écrans de moins de 600px */
 @media screen and (max-width: 600px) {
-  header {
+  .header {
     padding-inline: 16px;
+    /* Styles lorsque le menu est ouvert */
+    /* Animation pour ouvrir le menu */
+    /* Styles pour le menu burger lorsqu'il est ouvert */
   }
-  header.open {
+  .header.open {
     position: fixed;
     background-color: #fff;
     z-index: 2;
-    animation: openNav 0.7s ease-in-out 0s forwards;
     -webkit-animation: openNav 0.7s ease-in-out 0s forwards;
+            animation: openNav 0.7s ease-in-out 0s forwards;
   }
   @-webkit-keyframes openNav {
     0% {
-      transform: translateX(100%);
       -webkit-transform: translateX(100%);
-      -moz-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-      -o-transform: translateX(100%);
+              transform: translateX(100%);
     }
     100% {
       -webkit-transform: translateX(0);
@@ -247,23 +254,23 @@ footer {
   }
   @keyframes openNav {
     0% {
-      transform: translateX(100%);
       -webkit-transform: translateX(100%);
-      -moz-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-      -o-transform: translateX(100%);
+              transform: translateX(100%);
     }
     100% {
       -webkit-transform: translateX(0);
               transform: translateX(0);
     }
   }
-  header .siteNavigation .burgerMenu {
+  .header .siteNavigation {
+    /* Styles pour la navigation lorsqu'elle est ouverte */
+  }
+  .header .siteNavigation .burgerMenu {
     width: 30px;
     height: 20px;
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -272,8 +279,9 @@ footer {
         -ms-flex-pack: justify;
             justify-content: space-between;
     cursor: pointer;
+    /* Styles pour le menu burger lorsqu'il est ouvert */
   }
-  header .siteNavigation .burgerMenu .bar {
+  .header .siteNavigation .burgerMenu .bar {
     width: 100%;
     height: 4px;
     background-color: black;
@@ -282,24 +290,24 @@ footer {
     transition: transform 0.3s ease-in-out;
     transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   }
-  header .siteNavigation .burgerMenu.open .bar:nth-child(1) {
+  .header .siteNavigation .burgerMenu.open .bar:nth-child(1) {
     -webkit-transform: rotate(45deg) translate(5px, 5px);
             transform: rotate(45deg) translate(5px, 5px);
   }
-  header .siteNavigation .burgerMenu.open .bar:nth-child(2) {
+  .header .siteNavigation .burgerMenu.open .bar:nth-child(2) {
     opacity: 0;
   }
-  header .siteNavigation .burgerMenu.open .bar:nth-child(3) {
+  .header .siteNavigation .burgerMenu.open .bar:nth-child(3) {
     -webkit-transform: rotate(-45deg) translate(5px, -5px);
             transform: rotate(-45deg) translate(5px, -5px);
   }
-  header .siteNavigation .navigation {
-    display: none !important;
+  .header .siteNavigation .navigation {
+    display: none;
   }
-  header .siteNavigation .navigation.open {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
+  .header .siteNavigation .navigation.open {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -311,8 +319,9 @@ footer {
     background-color: #e00000;
     width: 100vw;
     height: 100vh;
+    /* Styles pour les liens de navigation lorsqu'ils sont ouverts */
   }
-  header .siteNavigation .navigation .menuNavigation {
+  .header .siteNavigation .navigation.open .menuNavigation {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -327,13 +336,14 @@ footer {
             align-items: center;
     padding-inline: 0;
   }
-  header .siteNavigation .navigation .menuNavigation li {
+  .header .siteNavigation .navigation.open .menuNavigation li {
     font-size: 45px !important;
   }
-  header .siteNavigation .navigation .menuNavigation li a {
+  .header .siteNavigation .navigation.open .menuNavigation li a {
     color: #fff !important;
   }
 }
+/* Styles pour le formulaire de contact */
 .form-contact {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -344,26 +354,29 @@ footer {
           flex-direction: column;
   -webkit-box-align: center !important;
       -ms-flex-align: center !important;
-          align-items: center !important;
+          align-items: center !important; /* Utilisation du !important, assure-toi que c'est nécessaire */
 }
 
+/* Styles pour les champs de saisie personnalisés */
 .custom-input-class,
 .custom-textarea-class {
   width: 100%;
   border-radius: 8px;
-  width: 270px;
   border: 1px solid #b8bbc2;
   resize: none;
 }
 
+/* Styles spécifiques pour le champ de saisie */
 .custom-input-class {
   height: 37px;
 }
 
+/* Styles spécifiques pour la zone de texte */
 .custom-textarea-class {
   height: 250px;
 }
 
+/* Styles pour l'étiquette personnalisée */
 .custom-label {
   font-size: 12px;
   font-family: "PoppinsMedium";
@@ -371,6 +384,7 @@ footer {
   line-height: 18px;
 }
 
+/* Styles pour le bouton de soumission personnalisé */
 .customsubmit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -387,6 +401,7 @@ footer {
   border: 1px solid #b8bbc2;
 }
 
+/* Styles de l'overlay de la fenêtre modale */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -394,7 +409,7 @@ footer {
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 3, 0.8);
-  display: none;
+  display: none; /* Initialement masqué, sera affiché par JavaScript pour afficher la fenêtre modale */
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -409,6 +424,7 @@ footer {
   display: flex;
 }
 
+/* Styles de la fenêtre modale elle-même */
 .popup-contact {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -432,6 +448,7 @@ footer {
   overflow: hidden;
 }
 
+/* Media query pour les écrans de petite taille */
 @media screen and (max-width: 465px) {
   .popup-contact {
     max-width: 270px;
@@ -596,6 +613,7 @@ footer {
     color: #fff !important;
   }
 }
+/* Styles pour la section des photos similaires */
 .PhotoSimilaire {
   margin: 0;
   width: 100%;
@@ -619,6 +637,7 @@ footer {
   }
 }
 
+/* Styles pour chaque bloc de photo relative */
 .blockPhotoRelative {
   -ms-flex-negative: 0;
       flex-shrink: 0;
@@ -626,6 +645,8 @@ footer {
   width: 564px;
   height: 495px;
   margin-bottom: 50px;
+  /* Ajustements responsives */
+  /* Styles pour l'overlay et les icônes au survol */
 }
 @media screen and (min-width: 765px) and (max-width: 1140px) {
   .blockPhotoRelative {
@@ -649,6 +670,7 @@ footer {
   display: block;
 }
 
+/* Styles pour l'overlay au survol de l'image */
 .overlay {
   position: absolute;
   top: 50%;
@@ -661,10 +683,15 @@ footer {
   background-color: rgba(0, 0, 0, 0);
   -webkit-transition: opacity 0.3s, background-color 0.3s;
   transition: opacity 0.3s, background-color 0.3s;
+  /* Ajustements responsives au survol */
+  /* Styles pour les titres dans l'overlay */
+  /* Styles pour l'icône de l'œil au survol */
+  /* Styles pour l'icône de plein écran au survol */
 }
 .overlay:hover {
   opacity: 0.8;
   background-color: rgba(0, 0, 0, 0.8);
+  /* Affichage des titres au survol */
 }
 .overlay:hover h2,
 .overlay:hover h3 {
@@ -679,6 +706,7 @@ footer {
   font-family: PoppinsRegular;
   font-size: 14px;
   display: none;
+  /* Ajustements responsives */
 }
 @media screen and (max-width: 765px) {
   .overlay h2 {
@@ -695,6 +723,7 @@ footer {
   font-family: PoppinsRegular;
   font-size: 14px;
   display: none;
+  /* Ajustements responsives */
 }
 @media screen and (max-width: 765px) {
   .overlay h3 {
@@ -715,6 +744,7 @@ footer {
   left: 255px;
   position: absolute;
   display: none;
+  /* Ajustements responsives */
 }
 @media screen and (max-width: 765px) {
   .overlay .eye-icon {
@@ -737,6 +767,7 @@ footer {
   left: 512px;
   border: 1px;
   display: none;
+  /* Ajustements responsives */
 }
 @media screen and (max-width: 765px) {
   .overlay .fullscreen-icon {
@@ -1263,6 +1294,7 @@ h1 {
   }
 }
 
+/* Styles du bloc de catalogue */
 .blocCatalogue {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1277,10 +1309,12 @@ h1 {
   gap: 10px;
 }
 
+/* Styles de l'image principale dans le bloc */
 #blockPusdImage {
   width: 100%;
 }
 
+/* Styles du bouton "Plus d'image" */
 #plusDImage {
   display: block;
   position: relative;
@@ -1296,6 +1330,7 @@ h1 {
   margin: 0 auto;
   margin-top: 5%;
   margin-bottom: 5%;
+  /* Styles au survol du bouton */
 }
 #plusDImage:hover {
   cursor: pointer;
@@ -1320,7 +1355,7 @@ h1 {
 }
 
 /* Close button styles */
-.lightbox .fermelightbox {
+.lightbox .lightboxClose {
   position: absolute;
   top: 40px;
   right: 18%;
@@ -1329,14 +1364,14 @@ h1 {
   color: #fff;
 }
 @media screen and (max-width: 1140px) {
-  .lightbox .fermelightbox {
+  .lightbox .lightboxClose {
     right: -8%;
   }
 }
 
 /* Navigation button styles */
-.lightbox .lightboxPrecedent,
-.lightbox .lightboxSuivant {
+.lightbox .lightboxPrevious,
+.lightbox .lightboxNext {
   font-family: space_monoregular;
   font-size: 14px;
   font-weight: 400;
@@ -1351,77 +1386,77 @@ h1 {
   color: #fff;
 }
 @media screen and (max-width: 765px) {
-  .lightbox .lightboxPrecedent,
-  .lightbox .lightboxSuivant {
+  .lightbox .lightboxPrevious,
+  .lightbox .lightboxNext {
     top: 89%;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 300px) {
-  .lightbox .lightboxPrecedent,
-  .lightbox .lightboxSuivant {
+  .lightbox .lightboxPrevious,
+  .lightbox .lightboxNext {
     right: 0%;
     top: 95%;
   }
 }
-.lightbox .lightboxPrecedent:hover,
-.lightbox .lightboxSuivant:hover {
+.lightbox .lightboxPrevious:hover,
+.lightbox .lightboxNext:hover {
   font-size: 15px;
   font-weight: 900;
   cursor: pointer;
 }
 
 /* Styles for the previous navigation button */
-.lightbox .lightboxPrecedent {
+.lightbox .lightboxPrevious {
   left: 12%;
 }
 @media screen and (min-width: 765px) and (max-width: 1140px) {
-  .lightbox .lightboxPrecedent {
+  .lightbox .lightboxPrevious {
     left: -18%;
     font-size: 25px;
     z-index: 1;
     top: 80%;
   }
-  .lightbox .lightboxPrecedent:hover {
+  .lightbox .lightboxPrevious:hover {
     font-size: 30px;
   }
 }
 @media screen and (min-width: 400px) and (max-width: 765px) {
-  .lightbox .lightboxPrecedent {
+  .lightbox .lightboxPrevious {
     right: 0%;
     left: 0%;
     top: 95%;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 400px) {
-  .lightbox .lightboxPrecedent {
+  .lightbox .lightboxPrevious {
     top: 95%;
     left: -11%;
   }
 }
 
 /* Styles for the next navigation button */
-.lightbox .lightboxSuivant {
+.lightbox .lightboxNext {
   right: 15%;
 }
 @media screen and (min-width: 765px) and (max-width: 1140px) {
-  .lightbox .lightboxSuivant {
+  .lightbox .lightboxNext {
     right: -16%;
     font-size: 25px;
     z-index: 1;
     top: 80%;
   }
-  .lightbox .lightboxSuivant:hover {
+  .lightbox .lightboxNext:hover {
     font-size: 30px;
   }
 }
 @media screen and (min-width: 400px) and (max-width: 765px) {
-  .lightbox .lightboxSuivant {
+  .lightbox .lightboxNext {
     right: 0%;
     top: 95%;
   }
 }
 @media screen and (min-width: 200px) and (max-width: 400px) {
-  .lightbox .lightboxSuivant {
+  .lightbox .lightboxNext {
     top: 95%;
     right: -8%;
   }

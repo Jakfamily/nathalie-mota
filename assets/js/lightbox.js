@@ -54,17 +54,17 @@ $(function () {
   attachEventsToImages();
 
   // Gestionnaire d'événement pour le clic sur le bouton de fermeture
-  $(".fermelightbox").on("click", closeLightbox);
+  $(".lightboxClose").on("click", closeLightbox);
 
   // Gestionnaire d'événement pour le clic sur le bouton précédent
-  $(".lightboxPrecedent").on("click", function () {
+  $(".lightboxPrevious").on("click", function () {
     const $images = $(".fullscreen-icon");
     currentIndex = currentIndex > 0 ? currentIndex - 1 : $images.length - 1;
     updateLightbox(currentIndex);
   });
 
   // Gestionnaire d'événement pour le clic sur le bouton suivant
-  $(".lightboxSuivant").on("click", function () {
+  $(".lightboxNext").on("click", function () {
     const $images = $(".fullscreen-icon");
     currentIndex = currentIndex < $images.length - 1 ? currentIndex + 1 : 0;
     updateLightbox(currentIndex);

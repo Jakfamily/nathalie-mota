@@ -15,7 +15,7 @@
 }
 
 /* Close button styles */
-.lightbox .fermelightbox {
+.lightbox .lightboxClose {
   position: absolute;
   top: 40px;
   right: 18%;
@@ -28,8 +28,8 @@
 }
 
 /* Navigation button styles */
-.lightbox .lightboxPrecedent,
-.lightbox .lightboxSuivant {
+.lightbox .lightboxPrevious,
+.lightbox .lightboxNext {
   font-family: space_monoregular;
   font-size: 14px;
   font-weight: 400;
@@ -61,7 +61,7 @@
 }
 
 /* Styles for the previous navigation button */
-.lightbox .lightboxPrecedent {
+.lightbox .lightboxPrevious {
   left: 12%;
 
   @media screen and (min-width: 765px) and (max-width: 1140px) {
@@ -88,7 +88,7 @@
 }
 
 /* Styles for the next navigation button */
-.lightbox .lightboxSuivant {
+.lightbox .lightboxNext {
   right: 15%;
 
   @media screen and (min-width: 765px) and (max-width: 1140px) {
