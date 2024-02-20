@@ -51,9 +51,9 @@
 /* Styles pour la section gauche contenant 'Catégorie' et 'Format' */
 .left-section {
   display: flex;
-  flex-direction: row; /* Alignement horizontal des éléments */
-  align-items: center; /* Alignement vertical des éléments */
-  gap: 20px; /* Ajout d'espace entre les éléments */
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 
 /* Styles pour la section droite contenant 'Trier par' */

@@ -1706,11 +1706,11 @@ h1 {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
-          flex-direction: row; /* Alignement horizontal des éléments */
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; /* Alignement vertical des éléments */
-  gap: 20px; /* Ajout d'espace entre les éléments */
+          align-items: center;
+  gap: 20px;
 }
 
 /* Styles pour la section droite contenant 'Trier par' */
