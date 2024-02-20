@@ -1,0 +1,67 @@
+/* Styles généraux pour tous les selects */
+.custom-select {
+  width: 260px;
+  height: 43px;
+  border: 1.3px solid #b8bbc2;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: transparent;
+  margin-bottom: 10px; /* Ajout d'espace entre les selects */
+
+  @media screen and (min-width: 770px) and (max-width: 1140px) {
+    width: 145px;
+  }
+
+  @media screen and (max-width: 770px) {
+    width: 100px;
+    padding: 0px;
+    height: 30px;
+  }
+}
+
+/* Style pour le conteneur de chaque paire label/select */
+.taxonomy-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Styles pour le conteneur #filtrePhoto */
+#filtrePhoto {
+  padding-top: 50px;
+  width: 1140px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+
+  @media screen and (max-width: 770px) {
+    width: 315px;
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 770px) and (max-width: 1140px) {
+    width: 715px;
+  }
+
+  @media screen and (max-width: 340px) {
+    margin-bottom: 50px;
+  }
+}
+
+/* Styles pour la section gauche contenant 'Catégorie' et 'Format' */
+.left-section {
+  display: flex;
+  flex-direction: row; /* Alignement horizontal des éléments */
+  align-items: center; /* Alignement vertical des éléments */
+  gap: 20px; /* Ajout d'espace entre les éléments */
+}
+
+/* Styles pour la section droite contenant 'Trier par' */
+.right-section {
+  align-items: flex-end; /* Aligne le texte à droite dans la section droite */
+}
+
+/* Styles spécifiques pour le sélecteur 'Trier par' */
+#annees {
+  margin-left: auto; /* Déplace 'Trier par' à droite */
+}

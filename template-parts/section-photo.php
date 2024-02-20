@@ -1,7 +1,7 @@
 <?php
 $args = array(
     'post_type'      => 'photo',
-    'posts_per_page' => 12,  // Limiter à 12 photos au chargement initial
+    'posts_per_page' => 12,
     'orderby'        => 'date',
     'order'          => 'ASC',
 );

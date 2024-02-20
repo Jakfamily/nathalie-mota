@@ -1,16 +1,12 @@
 <?php
 
 $photoUrl = get_field('photo');
-
 // Récupérer le titre de la photo
 $photo_titre = get_the_title();
-
 // Récupérer l'URL du post
 $post_url = get_permalink();
-
 // Récupérer la référence de la photo
 $reference = get_field('reference');
-
 // Récupérer les catégories de la photo
 $categories = get_the_terms(get_the_ID(), 'categorie');
 $categorie_name = $categories[0]->name; // On suppose qu'il y a au moins une catégorie
