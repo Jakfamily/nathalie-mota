@@ -281,7 +281,7 @@ body {
   font-size: 18px;
 
   @media screen and (max-width: 1140px) {
-    text-align: center; /* Centrer le texte en mode tablette et mobile */
+    text-align: center;
   }
 }
 
@@ -289,7 +289,7 @@ body {
 .interesser {
   font-family: "PoppinsRegular";
   font-size: 14px;
-  text-align: center; /* Centrer le texte en mode tablette et mobile */
+  text-align: center;
 }
 
 /* Style pour le message "Pas de photo similaire trouvée" */
@@ -298,18 +298,22 @@ body {
   margin-bottom: 5%;
   font-family: "PoppinsRegular";
   font-size: 20px;
-  text-align: center; /* Centrer le texte en mode tablette et mobile */
+  text-align: center;
 }
 
 /* Affichage des photos similaires */
 .similar_photo {
   display: flex;
-  flex-direction: column; /* Afficher les éléments en colonne */
-  align-items: center; /* Centrer les éléments en colonne */
+  justify-content: center;
   gap: 40px;
 
+  @media screen and (max-width: 1140px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .similar_photo__container {
-    width: 100%; /* Pleine largeur en mode tablette et mobile */
+    width: 48%;
   }
 
   .similar_photo__img {

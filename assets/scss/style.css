@@ -1128,7 +1128,7 @@ body {
 }
 @media screen and (max-width: 1140px) {
   .titleSugest {
-    text-align: center; /* Centrer le texte en mode tablette et mobile */
+    text-align: center;
   }
 }
 
@@ -1136,7 +1136,7 @@ body {
 .interesser {
   font-family: "PoppinsRegular";
   font-size: 14px;
-  text-align: center; /* Centrer le texte en mode tablette et mobile */
+  text-align: center;
 }
 
 /* Style pour le message "Pas de photo similaire trouvée" */
@@ -1145,7 +1145,7 @@ body {
   margin-bottom: 5%;
   font-family: "PoppinsRegular";
   font-size: 20px;
-  text-align: center; /* Centrer le texte en mode tablette et mobile */
+  text-align: center;
 }
 
 /* Affichage des photos similaires */
@@ -1153,17 +1153,24 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; /* Afficher les éléments en colonne */
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; /* Centrer les éléments en colonne */
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   gap: 40px;
 }
+@media screen and (max-width: 1140px) {
+  .similar_photo {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
 .similar_photo .similar_photo__container {
-  width: 100%; /* Pleine largeur en mode tablette et mobile */
+  width: 48%;
 }
 .similar_photo .similar_photo__img {
   width: 100%;
