@@ -7,7 +7,6 @@
   padding: 10px 20px;
   font-size: 16px;
   background-color: transparent;
-  margin-bottom: 10px; /* Ajout d'espace entre les selects */
 
   @media screen and (min-width: 770px) and (max-width: 1140px) {
     width: 145px;
@@ -58,10 +57,10 @@
 
 /* Styles pour la section droite contenant 'Trier par' */
 .right-section {
-  align-items: flex-end; /* Aligne le texte à droite dans la section droite */
+  align-items: flex-end;
 }
 
 /* Styles spécifiques pour le sélecteur 'Trier par' */
 #annees {
-  margin-left: auto; /* Déplace 'Trier par' à droite */
+  margin-left: auto;
 }

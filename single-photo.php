@@ -83,16 +83,15 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
   </div>
 </section>
 
-
-<!-- Section d'affichage des photos similaires -->
 <section>
   <div class="titleSugest">
     <h3>VOUS AIMEREZ AUSSI</h3>
   </div>
   <div class="similar_photo">
     <?php
+    // Récupération des catégories de la photo principale
     $categories = get_the_terms(get_the_ID(), 'categorie');
-
+    // Arguments de la requête pour récupérer les photos similaires
     $args = array(
       'post_type' => 'photo',
       'posts_per_page' => 2,
@@ -105,25 +104,25 @@ $nextThumbnailURL = $nextPost ? get_the_post_thumbnail_url($nextPost->ID, 'thumb
         ),
       ),
     );
+    // Exécution de la requête WP_Query avec les arguments définis
     $query = new WP_Query($args);
-
+    // Boucle à travers les photos similaires
     while ($query->have_posts()) :
       $query->the_post();
+      // Récupération de l'ID de la photo et de la référence
       $photoId = get_field('photo');
       $reference = get_field('reference');
       $refUppercase = strtoupper($reference);
+      // Affiche le bloc de photo en utilisant un template part (partie de modèle)
       get_template_part('template-parts/bloc-photo');
     endwhile;
-
     // Affiche un message si aucune photo similaire n'est trouvée
     if (!$query->have_posts()) :
       echo '<p class="photoNotFound">Pas de photo similaire trouvée pour la catégorie.</p>';
     endif;
-
     // Réinitialisation des données de post après la boucle de requête
     wp_reset_postdata();
     ?>
   </div>
 </section>
-
 <?php get_footer(); ?>

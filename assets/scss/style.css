@@ -73,6 +73,7 @@ footer {
   font-size: 16px;
   font-family: "space_monoregular", monospace;
   border-top: 1px solid black;
+  padding-top: 10px;
 }
 
 /* Styles pour le menu du footer */
@@ -1321,12 +1322,12 @@ h1 {
 }
 
 /* Styles de l'image principale dans le bloc */
-#blockPusdImage {
+#load-moreContainer {
   width: 100%;
 }
 
 /* Styles du bouton "Plus d'image" */
-#plusDImage {
+#btnLoad-more {
   display: block;
   position: relative;
   width: 270px;
@@ -1343,7 +1344,7 @@ h1 {
   margin-bottom: 5%;
   /* Styles au survol du bouton */
 }
-#plusDImage:hover {
+#btnLoad-more:hover {
   cursor: pointer;
   background-color: black;
   color: white;
@@ -1652,7 +1653,6 @@ h1 {
   padding: 10px 20px;
   font-size: 16px;
   background-color: transparent;
-  margin-bottom: 10px; /* Ajout d'espace entre les selects */
 }
 @media screen and (min-width: 770px) and (max-width: 1140px) {
   .custom-select {
@@ -1728,10 +1728,10 @@ h1 {
 .right-section {
   -webkit-box-align: end;
       -ms-flex-align: end;
-          align-items: flex-end; /* Aligne le texte à droite dans la section droite */
+          align-items: flex-end;
 }
 
 /* Styles spécifiques pour le sélecteur 'Trier par' */
 #annees {
-  margin-left: auto; /* Déplace 'Trier par' à droite */
+  margin-left: auto;
 }/*# sourceMappingURL=style.css.map */

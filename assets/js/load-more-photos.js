@@ -1,6 +1,6 @@
 jQuery(function ($) {
   // Lorsque le bouton "Charger plus" est cliqué
-  $("#plusDImage").on("click", function () {
+  $("#btnLoad-more").on("click", function () {
     const page = $(this).data("page");
     const newPage = page + 1;
     const ajaxurl = ajax_params.ajax_url;
@@ -14,10 +14,10 @@ jQuery(function ($) {
       },
       success: function (response) {
         // Insérez la nouvelle charge dans le conteneur des photos
-        $("#blockPusdImage").before(response);
+        $("#load-moreContainer").before(response);
 
         // Mettez à jour la valeur de la page
-        $("#plusDImage").data("page", newPage);
+        $("#btnLoad-more").data("page", newPage);
       },
     });
   });

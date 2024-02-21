@@ -1,7 +1,7 @@
 <?php
 $args = array(
     'post_type'      => 'photo',
-    'posts_per_page' => 12,
+    'posts_per_page' => 8,
     'orderby'        => 'date',
     'order'          => 'ASC',
 );
@@ -27,6 +27,6 @@ endif;
 ?>
 
 <!-- Bloc pour le chargement de plus de photos -->
-<div id="blockPusdImage">
-    <button id="plusDImage" data-page="1" data-url="">Charger plus</button>
+<div id="load-moreContainer">
+    <button id="btnLoad-more" data-page="1" data-url="">Charger plus</button>
 </div>
