@@ -18,20 +18,12 @@ jQuery(function ($) {
 
         // Mettez à jour la valeur de la page
         $("#btnLoad-more").data("page", newPage);
-
-        // Réattacher l'événement "Charger plus" au nouveau bouton
-        attachLoadMoreEvent();
       },
     });
   }
 
-  // Fonction pour attacher l'événement "Charger plus"
-  function attachLoadMoreEvent() {
-    $("#load-moreContainer").on("click", "#btnLoad-more", function () {
-      loadMoreContent();
-    });
-  }
-
-  // Lorsque la page est chargée initialement
-  attachLoadMoreEvent();
+  // Utiliser la délégation d'événement sur un parent stable
+  $(document).on("click", "#load-moreContainer #btnLoad-more", function () {
+    loadMoreContent();
+  });
 });

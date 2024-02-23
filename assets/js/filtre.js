@@ -1,12 +1,12 @@
 jQuery(document).ready(function ($) {
   $("#categorie, #format, #annees").on("change", function () {
     // Capturer les valeurs des filtres
-    var category = $("#categorie").val();
-    var format = $("#format").val();
-    var years = $("#annees").val();
+    const category = $("#categorie").val();
+    const format = $("#format").val();
+    const years = $("#annees").val();
 
     // Vérifier si les valeurs sont les valeurs par défaut
-    var isDefaultValues = category === "" && format === "" && years === "";
+    const isDefaultValues = category === "" && format === "" && years === "";
 
     $.ajax({
       url: ajax_params.ajax_url,
@@ -27,12 +27,16 @@ jQuery(document).ready(function ($) {
         console.log(xhr.status);
         console.log(thrownError);
         console.log(ajaxOptions);
+        console.log(xhr.responseText);
       },
       complete: function () {
         // Si les valeurs sont les valeurs par défaut, relancer le conteneur photo
         if (isDefaultValues) {
           // Mettez à jour la section des photos avec le contenu par défaut
           $("#containerPhoto").load(window.location.href + " #containerPhoto");
+
+          // Réinitialiser la fonction loadMoreContent
+          resetLoadMoreContent();
         }
       },
     });

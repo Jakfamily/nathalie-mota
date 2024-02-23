@@ -80,7 +80,7 @@ function load_more_photos() {
     $args = array(
         'post_type'      => 'photo',
         'posts_per_page' => -1,
-        'orderby'        => 'date',
+        'orderby'        => 'rand',
         'order'          => 'ASC',
         'paged'          => $page,
     );
@@ -154,8 +154,8 @@ function filter_photos() {
                 get_template_part('template-parts/bloc-photo');
             endwhile;
 
-            // Réinitialisez les données de post après la boucle de requête
-            wp_reset_postdata();
+            // Réinitialisez les données de requête après la boucle de requête
+            wp_reset_query();
         } else {
             // Aucune photo ne correspond aux critères de filtrage
             echo '<p class="critereFiltrage">Aucune photo ne correspond aux critères de filtrage</p>';
