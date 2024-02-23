@@ -37,11 +37,11 @@ $(function () {
   }
 
   // Fonction pour attacher les événements aux images
-  window.attachEventsToImages = function () {
+  function attachEventsToImages() {
     const $images = $(".fullscreen-icon");
     $images.off("click", imageClickHandler);
     $images.on("click", imageClickHandler);
-  };
+  }
 
   // Gestionnaire d'événement pour le clic sur une image
   function imageClickHandler() {
@@ -68,5 +68,10 @@ $(function () {
     const $images = $(".fullscreen-icon");
     currentIndex = currentIndex < $images.length - 1 ? currentIndex + 1 : 0;
     updateLightbox(currentIndex);
+  });
+
+  // Réattachez les gestionnaires d'événements après le chargement dynamique du contenu
+  $(document).ajaxComplete(function () {
+    attachEventsToImages();
   });
 });
