@@ -57,6 +57,7 @@ function enqueue_custom_scripts()
 
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
+// Ajout du script load-more-photos.js et filtre.js avec wp_localize_script pour passer des paramètres AJAX
 function enqueue_load_more_photos_script() {
     wp_enqueue_script('load-more-photos', get_template_directory_uri() . '/assets/js/load-more-photos.js', array('jquery'), null, true);
 
@@ -73,8 +74,7 @@ function enqueue_load_more_photos_script() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
 
-
-
+// Fonction pour charger plus de photos via AJAX
 function load_more_photos() {
     $page = $_POST['page'];
     $args = array(
@@ -97,13 +97,12 @@ function load_more_photos() {
         echo 'Aucune photo trouvée.';
     endif;
 
-    die(); // N'oubliez pas cette ligne pour terminer le traitement AJAX
+    die();
 }
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les utilisateurs non connectés
 
-
-// ////// Filtre photos //////
+// Fonction pour filtrer les photos via AJAX
 function filter_photos() {
     // Vérifiez si l'action est définie
     if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
@@ -114,8 +113,8 @@ function filter_photos() {
         $args = array(
             'post_type'      => 'photo',
             'posts_per_page' => -1,
-            'orderby'        => 'date', // Vous pouvez ajuster cela selon vos besoins
-            'order'          => 'ASC', // Vous pouvez ajuster cela selon vos besoins
+            'orderby'        => 'date',
+            'order'          => 'ASC',
             'tax_query'      => array(
                 'relation' => 'AND',
             ),
