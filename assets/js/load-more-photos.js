@@ -1,7 +1,7 @@
 jQuery(function ($) {
-  // Lorsque le bouton "Charger plus" est cliqué
-  $("#btnLoad-more").on("click", function () {
-    const page = $(this).data("page");
+  // Fonction pour gérer le chargement du contenu additionnel
+  function loadMoreContent() {
+    const page = $("#btnLoad-more").data("page");
     const newPage = page + 1;
     const ajaxurl = ajax_params.ajax_url;
 
@@ -18,7 +18,20 @@ jQuery(function ($) {
 
         // Mettez à jour la valeur de la page
         $("#btnLoad-more").data("page", newPage);
+
+        // Réattacher l'événement "Charger plus" au nouveau bouton
+        attachLoadMoreEvent();
       },
     });
-  });
+  }
+
+  // Fonction pour attacher l'événement "Charger plus"
+  function attachLoadMoreEvent() {
+    $("#load-moreContainer").on("click", "#btnLoad-more", function () {
+      loadMoreContent();
+    });
+  }
+
+  // Lorsque la page est chargée initialement
+  attachLoadMoreEvent();
 });

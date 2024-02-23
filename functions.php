@@ -60,12 +60,19 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 function enqueue_load_more_photos_script() {
     wp_enqueue_script('load-more-photos', get_template_directory_uri() . '/assets/js/load-more-photos.js', array('jquery'), null, true);
 
-    // Passer des paramètres AJAX à votre script
+    wp_enqueue_script('filtre', get_template_directory_uri() . '/assets/js/filtre.js', array('jquery'), null, true);
+
+    // Utilisez wp_localize_script pour passer des paramètres à votre script
     wp_localize_script('load-more-photos', 'ajax_params', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+    ));
+
+    wp_localize_script('filtre', 'ajax_params', array(
         'ajax_url' => admin_url('admin-ajax.php'),
     ));
 }
 add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
+
 
 
 function load_more_photos() {
@@ -97,85 +104,70 @@ add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les u
 
 
 // ////// Filtre photos //////
-// function filter_photos() {
-//     // Vérifiez si l'action est définie
-//     if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
-//         // Récupérez les filtres et nettoyez-les
-//         $filter = array_map('sanitize_text_field', $_POST['filter']);
+function filter_photos() {
+    // Vérifiez si l'action est définie
+    if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
+        // Récupérez les filtres et nettoyez-les
+        $filter = array_map('sanitize_text_field', $_POST['filter']);
 
-//         // Construisez votre requête WP_Query avec les filtres
-//         $args = array(
-//             'post_type'      => 'photo',
-//             'posts_per_page' => -1,
-//             'tax_query'      => array(
-//                 'relation' => 'AND',
-//             ),
-//         );
+        // Construisez votre requête WP_Query avec les filtres
+        $args = array(
+            'post_type'      => 'photo',
+            'posts_per_page' => -1,
+            'orderby'        => 'date', // Vous pouvez ajuster cela selon vos besoins
+            'order'          => 'ASC', // Vous pouvez ajuster cela selon vos besoins
+            'tax_query'      => array(
+                'relation' => 'AND',
+            ),
+        );
 
-//         // Ajoutez les taxonomies à la requête si elles sont spécifiées
-//         $taxonomy_filters = array('categorie', 'format', 'annee');
+        // Ajoutez les taxonomies à la requête si elles sont spécifiées
+        $taxonomy_filters = array('categorie', 'format', 'annees');
 
-//         foreach ($taxonomy_filters as $taxonomy_filter) {
-//             if (!empty($filter[$taxonomy_filter])) {
-//                 $args['tax_query'][] = array(
-//                     'taxonomy' => $taxonomy_filter,
-//                     'field'    => 'slug',
-//                     'terms'    => $filter[$taxonomy_filter],
-//                 );
-//             }
-//         }
+        foreach ($taxonomy_filters as $taxonomy_filter) {
+            if (!empty($filter[$taxonomy_filter])) {
+                $args['tax_query'][] = array(
+                    'taxonomy' => $taxonomy_filter,
+                    'field'    => 'slug',
+                    'terms'    => $filter[$taxonomy_filter],
+                );
+            }
+        }
 
-//         // Si l'année est spécifiée dans le filtre
-//         if (!empty($filter['annees'])) {
-//             $args['order'] = ($filter['annees'] == 'date_desc') ? 'DESC' : 'ASC';
-//         }
+        // Si l'année est spécifiée dans le filtre
+        if (!empty($filter['years'])) {
+            $args['order'] = ($filter['years'] == 'date_desc') ? 'DESC' : 'ASC';
+        }
 
-//         // Effectuez la requête WP_Query
-//         $query = new WP_Query($args);
+        // Effectuez la requête WP_Query
+        $query = new WP_Query($args);
 
-//         // Vérifiez si la requête a réussi
-//         if ($query->have_posts()) {
-//             // Boucle à travers les résultats de la requête
-//             while ($query->have_posts()) :
-//                 $query->the_post();
-//                 // Récupérez et affichez les informations de chaque photo
-//                 $photoId      = get_field('photo');
-//                 $reference    = get_field('reference');
-//                 $refUppercase = strtoupper($reference);
-//                 // Affiche le bloc de photo
-//                 get_template_part('template-parts/bloc-photo');
-//             endwhile;
+        // Vérifiez si la requête a réussi
+        if ($query->have_posts()) {
+            // Boucle à travers les résultats de la requête
+            while ($query->have_posts()) :
+                $query->the_post();
+                // Récupérez et affichez les informations de chaque photo
+                $photoId      = get_field('photo');
+                $reference    = get_field('reference');
+                $refUppercase = strtoupper($reference);
+                // Affiche le bloc de photo
+                get_template_part('template-parts/bloc-photo');
+            endwhile;
 
-//             // Réinitialisez les données de post après la boucle de requête
-//             wp_reset_postdata();
-//         } else {
-//             // Aucune photo ne correspond aux critères de filtrage
-//             echo '<p class="critereFiltrage">Aucune photo ne correspond aux critères de filtrage</p>';
-//         }
-//     }
+            // Réinitialisez les données de post après la boucle de requête
+            wp_reset_postdata();
+        } else {
+            // Aucune photo ne correspond aux critères de filtrage
+            echo '<p class="critereFiltrage">Aucune photo ne correspond aux critères de filtrage</p>';
+        }
+    }
 
-//     // Assurez-vous que votre code renvoie la sortie souhaitée pour le traitement AJAX
-//     die();
-// }
+    // Assurez-vous que votre code renvoie la sortie souhaitée pour le traitement AJAX
+    die();
+}
 
-
-
-
-// // Hook pour les utilisateurs connectés
-// add_action('wp_ajax_filter_photos', 'filter_photos');
-// // Hook pour les utilisateurs non connectés
-// add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
-
-// function enqueue_filter_script() {
-//     // Enregistrez votre script avec wp_enqueue_script
-//     wp_enqueue_script('custom-filter-script', get_template_directory_uri() . '/assets/js/filtre.js', array('jquery'), '1.0', true);
-
-//     // Utilisez wp_localize_script pour passer des paramètres à votre script
-//     wp_localize_script('custom-filter-script', 'ajax_params', array(
-//         'ajaxurl' => admin_url('admin-ajax.php'),
-//         'nonce' => wp_create_nonce('ajax_nonce'), // Ajoutez un nonce pour la sécurité
-//     ));
-// }
-
-// // Ajoutez l'action pour enregistrer votre script
-// add_action('wp_enqueue_scripts', 'enqueue_filter_script');
+// Hook pour les utilisateurs connectés
+add_action('wp_ajax_filter_photos', 'filter_photos');
+// Hook pour les utilisateurs non connectés
+add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
