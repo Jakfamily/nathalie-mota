@@ -4,7 +4,7 @@ jQuery(document).ready(function ($) {
     const category = $("#categorie").val();
     const format = $("#format").val();
     const years = $("#annees").val();
-
+    console.log(category);
     // Vérifier si les valeurs sont les valeurs par défaut
     const isDefaultValues = category === "" && format === "" && years === "";
 
@@ -34,9 +34,6 @@ jQuery(document).ready(function ($) {
         if (isDefaultValues) {
           // Mettez à jour la section des photos avec le contenu par défaut
           $("#containerPhoto").load(window.location.href + " #containerPhoto");
-
-          // Réinitialiser la fonction loadMoreContent
-          resetLoadMoreContent();
         }
       },
     });

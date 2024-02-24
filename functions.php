@@ -58,7 +58,8 @@ function enqueue_custom_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
 
 // Ajout du script load-more-photos.js et filtre.js avec wp_localize_script pour passer des paramètres AJAX
-function enqueue_load_more_photos_script() {
+function enqueue_load_more_photos_script()
+{
     wp_enqueue_script('load-more-photos', get_template_directory_uri() . '/assets/js/load-more-photos.js', array('jquery'), null, true);
 
     wp_enqueue_script('filtre', get_template_directory_uri() . '/assets/js/filtre.js', array('jquery'), null, true);
@@ -75,7 +76,8 @@ function enqueue_load_more_photos_script() {
 add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
 
 // Fonction pour charger plus de photos via AJAX
-function load_more_photos() {
+function load_more_photos()
+{
     $page = $_POST['page'];
     $args = array(
         'post_type'      => 'photo',
@@ -103,11 +105,15 @@ add_action('wp_ajax_load_more_photos', 'load_more_photos');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les utilisateurs non connectés
 
 // Fonction pour filtrer les photos via AJAX
-function filter_photos() {
+function filter_photos()
+{
     // Vérifiez si l'action est définie
     if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
         // Récupérez les filtres et nettoyez-les
         $filter = array_map('sanitize_text_field', $_POST['filter']);
+
+        // Ajoutez des messages de débogage pour voir les valeurs reçues
+        error_log('Filter values: ' . print_r($filter, true));
 
         // Construisez votre requête WP_Query avec les filtres
         $args = array(
@@ -120,22 +126,27 @@ function filter_photos() {
             ),
         );
 
-        // Ajoutez les taxonomies à la requête si elles sont spécifiées
-        $taxonomy_filters = array('categorie', 'format', 'annees');
-
-        foreach ($taxonomy_filters as $taxonomy_filter) {
-            if (!empty($filter[$taxonomy_filter])) {
-                $args['tax_query'][] = array(
-                    'taxonomy' => $taxonomy_filter,
-                    'field'    => 'slug',
-                    'terms'    => $filter[$taxonomy_filter],
-                );
-            }
+        // Ajoutez la taxonomie pour la catégorie si elle est spécifiée
+        if (!empty($filter['category'])) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'categorie',
+                'field'    => 'slug',
+                'terms'    => $filter['category'],
+            );
         }
 
-        // Si l'année est spécifiée dans le filtre
+        // Ajoutez la taxonomie pour l'année si elle est spécifiée
         if (!empty($filter['years'])) {
             $args['order'] = ($filter['years'] == 'date_desc') ? 'DESC' : 'ASC';
+        }
+
+        // Ajoutez la taxonomie pour le format si elle est spécifiée
+        if (!empty($filter['format'])) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'format',
+                'field'    => 'slug',
+                'terms'    => $filter['format'],
+            );
         }
 
         // Effectuez la requête WP_Query
@@ -147,9 +158,14 @@ function filter_photos() {
             while ($query->have_posts()) :
                 $query->the_post();
                 // Récupérez et affichez les informations de chaque photo
-                $photoId      = get_field('photo');
+                $photoId      = get_post_thumbnail_id();
                 $reference    = get_field('reference');
                 $refUppercase = strtoupper($reference);
+
+                // Ajoutez des messages de débogage pour les champs ACF
+                error_log('Photo ID: ' . $photoId);
+                error_log('Reference: ' . $reference);
+
                 // Affiche le bloc de photo
                 get_template_part('template-parts/bloc-photo');
             endwhile;

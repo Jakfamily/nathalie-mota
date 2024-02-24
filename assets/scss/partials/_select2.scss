@@ -1,0 +1,24 @@
+/* Styles généraux pour Select2 */
+.select2-container {
+  width: 260px;
+  font-size: 16px;
+}
+
+/* Styles pour le survol de l'option */
+.select2-results__option[aria-selected="false"]:hover,
+.select2-container--focus .select2-results__option[aria-selected="false"] {
+  background-color: #fe5858 !important;
+  color: #fff !important;
+}
+
+/* Styles pour l'étiquette sélectionnée */
+.select2-selection__choice {
+  background-color: #ffd6d6 !important;
+  color: black !important;
+}
+
+/* Styles pour le texte des options lorsque Select2 est actif */
+.select2-container--open .select2-results__option[aria-selected="false"] {
+  background-color: #fe5858 !important;
+  color: #fff !important;
+}
