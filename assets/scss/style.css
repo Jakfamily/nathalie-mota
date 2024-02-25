@@ -1655,18 +1655,6 @@ h1 {
   font-size: 16px;
   background-color: transparent;
 }
-@media screen and (min-width: 770px) and (max-width: 1140px) {
-  .custom-select {
-    width: 145px !important;
-  }
-}
-@media screen and (max-width: 770px) {
-  .custom-select {
-    width: 100px !important;
-    padding: 0px !important;
-    height: 30px !important;
-  }
-}
 
 /* Style pour le conteneur de chaque paire label/select */
 .taxonomy-container {
@@ -1676,6 +1664,11 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+@media screen and (max-width: 770px) {
+  .taxonomy-container {
+    width: 100%;
+  }
 }
 
 /* Styles pour le conteneur #filtrePhoto */
@@ -1723,6 +1716,19 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
+}
+@media screen and (max-width: 770px) {
+  .left-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 0px;
+    width: 100%;
+  }
 }
 
 /* Styles pour la section droite contenant 'Trier par' */
@@ -1789,4 +1795,11 @@ h1 {
 .select2-container--default .select2-results__option:first-child {
   background-color: #ffd6d6 !important;
   color: #000 !important;
+}
+
+@media screen and (max-width: 768px) {
+  .select2-container--default .select2-selection--single {
+    width: 100% !important;
+    margin-bottom: 5px;
+  }
 }/*# sourceMappingURL=style.css.map */

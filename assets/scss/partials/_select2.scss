@@ -58,3 +58,10 @@
   background-color: #ffd6d6 !important;
   color: #000 !important;
 }
+
+@media screen and (max-width: 768px) {
+  .select2-container--default .select2-selection--single {
+    width: 100% !important;
+    margin-bottom: 5px;
+  }
+}
