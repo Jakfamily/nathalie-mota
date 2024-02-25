@@ -85,31 +85,45 @@ add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
 // Fonction pour charger plus de photos via AJAX
 function load_more_photos()
 {
+    // Récupère le numéro de page à partir des données POST
     $page = $_POST['page'];
+
+    // Arguments de la requête pour récupérer les photos
     $args = array(
-        'post_type'      => 'photo',
-        'posts_per_page' => -1,
-        'orderby'        => 'rand',
-        'order'          => 'ASC',
-        'paged'          => $page,
+        'post_type'      => 'photo',     // Type de publication : photo
+        'posts_per_page' => -1,          // Nombre de photos par page (-1 pour toutes)
+        'orderby'        => 'rand',      // Tri aléatoire
+        'order'          => 'ASC',       // Ordre ascendant
+        'paged'          => $page,       // Numéro de page
     );
 
+    // Exécute la requête WP_Query avec les arguments
     $photo_block = new WP_Query($args);
 
+    // Vérifie s'il y a des photos dans la requête
     if ($photo_block->have_posts()) :
+        // Boucle à travers les photos
         while ($photo_block->have_posts()) :
             $photo_block->the_post();
+            // Inclut la partie du modèle pour afficher un bloc de photo
             get_template_part('template-parts/bloc-photo', get_post_format());
         endwhile;
+
+        // Réinitialise les données post
         wp_reset_postdata();
     else :
+        // Aucune photo trouvée
         echo 'Aucune photo trouvée.';
     endif;
 
+    // Termine l'exécution de la fonction
     die();
 }
+
+// Ajoute l'action AJAX pour les utilisateurs connectés
 add_action('wp_ajax_load_more_photos', 'load_more_photos');
-add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos'); // Pour les utilisateurs non connectés
+// Ajoute l'action AJAX pour les utilisateurs non connectés
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
 
 // Fonction pour filtrer les photos via AJAX
 function filter_photos()
