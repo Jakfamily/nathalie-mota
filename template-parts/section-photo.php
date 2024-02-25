@@ -2,7 +2,7 @@
 $args = array(
     'post_type'      => 'photo',
     'posts_per_page' => 8,
-    'orderby'        => 'date',
+    'orderby'        => 'rand',
     'order'          => 'ASC',
 );
 $photo_block = new WP_Query($args);

@@ -53,6 +53,13 @@ function enqueue_custom_scripts()
 
     // Enqueue filtre.js
     wp_enqueue_script('filtre-script', get_template_directory_uri() . '/assets/js/filtre.js', array('jquery'), '1.0.0', true);
+
+    // Bibliotheque Select2 pour les selects de tri
+    wp_enqueue_script('select2-js', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js', array('jquery'), '4.0.13', true);
+    wp_enqueue_style('select2-css', 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css', array());
+
+    //Enqueue custom-select.js
+    wp_enqueue_script('custom-select-script', get_template_directory_uri() . '/assets/js/custom-select.js', array('jquery'), '1.0.0', true);
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
@@ -119,7 +126,7 @@ function filter_photos()
         $args = array(
             'post_type'      => 'photo',
             'posts_per_page' => -1,
-            'orderby'        => 'date',
+            'orderby'        => 'rand',
             'order'          => 'ASC',
             'tax_query'      => array(
                 'relation' => 'AND',
