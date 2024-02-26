@@ -1,5 +1,3 @@
-console.log("menuBurger.js");
-
 // Attend que le document soit prêt avant d'exécuter le code jQuery
 $(function () {
   // Sélectionne les éléments du DOM

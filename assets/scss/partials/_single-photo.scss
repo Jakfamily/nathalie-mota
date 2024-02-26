@@ -53,14 +53,39 @@ body {
     }
 
     .photo-title {
-      width: 100%; /* Pleine largeur */
-      margin-bottom: 10px; /* Ajuster l'espacement bas */
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 40px;
+      line-height: 48px;
+
+      @media screen and (max-width: 820px) {
+        font-size: 30px; /* Ajustez la taille de la police pour les écrans plus petits */
+        line-height: 36px; /* Ajustez la hauteur de ligne pour les écrans plus petits */
+      }
     }
   }
 
   .photo-title {
     width: 50%;
     margin: 0;
+
+    h2 {
+      font-family: "space_monoregular";
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 66px;
+      line-height: 58px;
+
+      @media screen and (max-width: 820px) {
+        font-size: 40px; /* Ajustez la taille de la police pour les écrans plus petits */
+        line-height: 48px; /* Ajustez la hauteur de ligne pour les écrans plus petits */
+        width: 100%;
+        left: 0;
+        position: relative;
+        text-align: center;
+      }
+    }
   }
 
   .photo-info {
@@ -86,24 +111,6 @@ body {
     font-weight: 400;
     line-height: 21px;
     letter-spacing: 0.1em;
-
-    h2 {
-      font-family: "space_monoregular";
-      text-transform: uppercase;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 66px;
-      line-height: 58px;
-
-      @media screen and (max-width: 820px) {
-        .photo-title h2 {
-          width: 100%;
-          left: 0;
-          position: relative;
-          text-align: center;
-        }
-      }
-    }
   }
 }
 

@@ -1,5 +1,3 @@
-console.log("Lightbox Ouverture et Fermeture : son js est chargé");
-
 // Fonction principale exécutée lorsque le DOM est prêt
 $(function () {
   // Sélection des éléments du DOM nécessaires
