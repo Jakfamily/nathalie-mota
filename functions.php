@@ -85,36 +85,49 @@ add_action('wp_enqueue_scripts', 'enqueue_load_more_photos_script');
 // Fonction pour charger plus de photos via AJAX
 function load_more_photos()
 {
+    session_start();
     // Récupère le numéro de page à partir des données POST
     $page = $_POST['page'];
-
-    // Arguments de la requête pour récupérer les photos
-    $args = array(
-        'post_type'      => 'photo',     // Type de publication : photo
-        'posts_per_page' => -1,          // Nombre de photos par page (-1 pour toutes)
-        'orderby'        => 'rand',      // Tri aléatoire
-        'order'          => 'ASC',       // Ordre ascendant
-        'paged'          => $page,       // Numéro de page
-    );
-
+    // Vérifiez si les photos ont déjà été affichées
+    //if (!isset($_SESSION['photos_displayed'])) {
+        
+        // Arguments de la requête pour récupérer les photos
+        $args = array(
+            'post_type'      => 'photo',     // Type de publication : photo
+            'posts_per_page' => 8,          // Nombre de photos par page (-1 pour toutes)
+            //'orderby'        => 'rand',      // Tri aléatoire
+            'order'          => 'ASC',       // Ordre ascendant
+            'paged'          => $page,       // Numéro de page
+        );
+        //$_SESSION['photos_displayed'] = true; // Marquez les photos comme affichées
+    /*} else {
+        // Si les photos ont déjà été affichées, vous pouvez choisir de ne pas définir $args ou de le définir à une valeur différente
+        $args = null;
+    }*/
     // Exécute la requête WP_Query avec les arguments
     $photo_block = new WP_Query($args);
-
+    $return = array();
     // Vérifie s'il y a des photos dans la requête
     if ($photo_block->have_posts()) :
         // Boucle à travers les photos
         while ($photo_block->have_posts()) :
             $photo_block->the_post();
             // Inclut la partie du modèle pour afficher un bloc de photo
+            
             get_template_part('template-parts/bloc-photo', get_post_format());
+            
         endwhile;
 
         // Réinitialise les données post
         wp_reset_postdata();
-    else :
-        // Aucune photo trouvée
-        echo 'Aucune photo trouvée.';
     endif;
+    //get number of post in $photo_block->have_posts() left
+
+    if($photo_block->max_num_pages != $page ){
+        $return['more'] = true;
+        $next_page = $page + 1;
+        echo '<div id="load-moreContainer"><button id="btnLoad-more" data-page="'. $next_page .'" data-url="' . admin_url('admin-ajax.php') . '" data-filtered="1" >Charger plus</button></div>';
+    }
 
     // Termine l'exécution de la fonction
     die();
@@ -132,6 +145,7 @@ function filter_photos()
     if (isset($_POST['action']) && $_POST['action'] == 'filter_photos') {
         // Récupérez les filtres et nettoyez-les
         $filter = array_map('sanitize_text_field', $_POST['filter']);
+        $page = $_POST['page'];
 
         // Ajoutez des messages de débogage pour voir les valeurs reçues
         error_log('Filter values: ' . print_r($filter, true));
@@ -139,9 +153,9 @@ function filter_photos()
         // Construisez votre requête WP_Query avec les filtres
         $args = array(
             'post_type'      => 'photo',
-            'posts_per_page' => -1,
-            'orderby'        => 'rand',
+            'posts_per_page' => 8,
             'order'          => 'ASC',
+            'paged'          => $page,
             'tax_query'      => array(
                 'relation' => 'AND',
             ),
@@ -169,7 +183,6 @@ function filter_photos()
                 'terms'    => $filter['format'],
             );
         }
-
         // Effectuez la requête WP_Query
         $query = new WP_Query($args);
 
@@ -191,6 +204,13 @@ function filter_photos()
                 get_template_part('template-parts/bloc-photo');
             endwhile;
 
+            if ($query->max_num_pages > 1 && $page == 1) {
+                $next_page = $page + 1;
+                echo '<div id="load-moreContainer"><button id="btnLoad-more" data-page="'. $next_page .'" data-url="' . admin_url('admin-ajax.php') . '" data-filtered="1" >Charger plus</button></div>';
+            }
+            ?>
+
+            <?php
             // Réinitialisez les données de requête après la boucle de requête
             wp_reset_query();
         } else {

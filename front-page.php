@@ -12,9 +12,4 @@
   <?php get_template_part('template-parts/section-photo'); ?>
 </section>
 
-<!-- Bloc pour le chargement de plus de photos -->
-<div id="load-moreContainer">
-    <button id="btnLoad-more" data-page="1" data-url="">Charger plus</button>
-</div>
-
 <?php get_footer(); ?>

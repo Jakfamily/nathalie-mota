@@ -39,6 +39,11 @@
   font-family: "poppinsregular";
 }
 
+//fix
+.select2-search--dropdown {
+  padding: 20px !important;
+}
+
 /* Styles pour la sélection unique de Select2 */
 .select2-container--default .select2-selection--single {
   width: 260px !important;

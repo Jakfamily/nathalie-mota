@@ -2,7 +2,7 @@
 $args = array(
     'post_type'      => 'photo',
     'posts_per_page' => 8,
-    'orderby'        => 'rand',
+    //'orderby'        => 'rand',
     'order'          => 'ASC',
 );
 $photo_block = new WP_Query($args);
@@ -25,3 +25,8 @@ else :
     echo 'Aucune photo trouvée.';
 endif;
 ?>
+
+<!-- Bloc pour le chargement de plus de photos -->
+<div id="load-moreContainer">
+    <button id="btnLoad-more" data-page="1" data-url="">Charger plus</button>
+</div>

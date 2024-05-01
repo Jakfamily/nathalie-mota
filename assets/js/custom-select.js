@@ -1,3 +1,4 @@
+
 // Attend que le document soit prêt avant d'appliquer les fonctionnalités
 $(function () {
   // Initialise le plugin Select2 sur les éléments avec la classe ".custom-select"
