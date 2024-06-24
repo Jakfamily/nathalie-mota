@@ -88,9 +88,7 @@ function load_more_photos()
     session_start();
     // Récupère le numéro de page à partir des données POST
     $page = $_POST['page'];
-    // Vérifiez si les photos ont déjà été affichées
-    //if (!isset($_SESSION['photos_displayed'])) {
-        
+
         // Arguments de la requête pour récupérer les photos
         $args = array(
             'post_type'      => 'photo',     // Type de publication : photo
@@ -99,11 +97,7 @@ function load_more_photos()
             'order'          => 'ASC',       // Ordre ascendant
             'paged'          => $page,       // Numéro de page
         );
-        //$_SESSION['photos_displayed'] = true; // Marquez les photos comme affichées
-    /*} else {
-        // Si les photos ont déjà été affichées, vous pouvez choisir de ne pas définir $args ou de le définir à une valeur différente
-        $args = null;
-    }*/
+
     // Exécute la requête WP_Query avec les arguments
     $photo_block = new WP_Query($args);
     $return = array();
@@ -113,9 +107,9 @@ function load_more_photos()
         while ($photo_block->have_posts()) :
             $photo_block->the_post();
             // Inclut la partie du modèle pour afficher un bloc de photo
-            
+
             get_template_part('template-parts/bloc-photo', get_post_format());
-            
+
         endwhile;
 
         // Réinitialise les données post
